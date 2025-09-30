@@ -149,7 +149,7 @@ async function loadImages() {
   
   try {
     // src/assets/images/landscapes 폴더의 모든 이미지 가져오기
-    const landscapeModules = import.meta.glob('/src/assets/images/landscapes/*.(jpg|jpeg|png|webp)', { 
+    const landscapeModules = import.meta.glob('@/assets/images/landscapes/*.(jpg|jpeg|png|webp)', { 
       eager: true,
       query: '?url',
       import: 'default'
@@ -164,7 +164,7 @@ async function loadImages() {
     }
     
     // src/assets/images/travel 폴더의 모든 이미지 가져오기
-    const travelModules = import.meta.glob('/src/assets/images/travel/*.(jpg|jpeg|png|webp)', { 
+    const travelModules = import.meta.glob('@/assets/images/travel/*.(jpg|jpeg|png|webp)', { 
       eager: true,
       query: '?url',
       import: 'default'
@@ -178,51 +178,61 @@ async function loadImages() {
       })
     }
     
-    // 만약 이미지가 없다면 public 폴더에서 시도
-    if (photos.length === 0) {
-      // public 폴더 이미지들을 직접 경로로 추가
-      const publicImages = [
-        '/images/landscapes/PHS_3738.jpg',
-        '/images/landscapes/PHS_3742.jpg',
-        '/images/landscapes/PHS_3773.jpg',
-        '/images/landscapes/PHS_4852.jpg',
-        '/images/landscapes/PHS_4900.jpg',
-        '/images/landscapes/PHS_4905.jpg',
-        '/images/landscapes/PHS_5044-Enhanced-NR.jpg',
-        '/images/landscapes/PHS_6290.jpg',
-        '/images/landscapes/PHS_6298.jpg',
-        '/images/landscapes/PHS_6354.jpg',
-        '/images/landscapes/PHS_6479.jpg',
-        '/images/landscapes/PHS_9557.jpg',
-        '/images/landscapes/PHS_9602-향상됨-노이즈 감소.jpg'
-      ]
-      
-      for (const imagePath of publicImages) {
-        photos.push({
-          category: 'Landscapes',
-          image: imagePath
-        })
-      }
-    }
+    console.log('Loaded photos:', photos.length)
     
   } catch (error) {
     console.warn('이미지 로딩 중 오류:', error)
-    // 폴백으로 기존 이미지들 사용
-    photos.push(
-      { category: 'Landscapes', image: '/images/landscapes/PHS_3738.jpg' },
-      { category: 'Landscapes', image: '/images/landscapes/PHS_3742.jpg' },
-      { category: 'Landscapes', image: '/images/landscapes/PHS_3773.jpg' },
-      { category: 'Landscapes', image: '/images/landscapes/PHS_4852.jpg' },
-      { category: 'Landscapes', image: '/images/landscapes/PHS_4900.jpg' },
-      { category: 'Landscapes', image: '/images/landscapes/PHS_4905.jpg' },
-      { category: 'Landscapes', image: '/images/landscapes/PHS_5044-Enhanced-NR.jpg' },
-      { category: 'Landscapes', image: '/images/landscapes/PHS_6290.jpg' },
-      { category: 'Landscapes', image: '/images/landscapes/PHS_6298.jpg' },
-      { category: 'Landscapes', image: '/images/landscapes/PHS_6354.jpg' },
-      { category: 'Landscapes', image: '/images/landscapes/PHS_6479.jpg' },
-      { category: 'Landscapes', image: '/images/landscapes/PHS_9557.jpg' },
-      { category: 'Landscapes', image: '/images/landscapes/PHS_9602-향상됨-노이즈 감소.jpg' }
-    )
+  }
+  
+  // 만약 assets에서 이미지를 못 찾았다면 public 폴더 이미지들을 사용
+  if (photos.length === 0) {
+    console.log('Using public folder images as fallback')
+    const publicImages = [
+      '/images/landscapes/2H6A8555.jpg',
+      '/images/landscapes/2H6A8621.jpg',
+      '/images/landscapes/2H6A8629.jpg',
+      '/images/landscapes/2H6A8670.jpg',
+      '/images/landscapes/2H6A8684.jpg',
+      '/images/landscapes/2H6A8704.jpg',
+      '/images/landscapes/2H6A8731.jpg',
+      '/images/landscapes/2H6A8769.jpg',
+      '/images/landscapes/2H6A8795.jpg',
+      '/images/landscapes/2H6A8803.jpg',
+      '/images/landscapes/2H6A8904.jpg',
+      '/images/landscapes/2H6A8930.jpg',
+      '/images/landscapes/PHS_2154.jpg',
+      '/images/landscapes/PHS_2163.jpg',
+      '/images/landscapes/PHS_2187.jpg',
+      '/images/landscapes/PHS_2202.jpg',
+      '/images/landscapes/PHS_2206.jpg',
+      '/images/landscapes/PHS_2488-향상됨-노이즈 감소.jpg',
+      '/images/landscapes/PHS_2591.jpg',
+      '/images/landscapes/PHS_2736.jpg',
+      '/images/landscapes/PHS_2738.jpg',
+      '/images/landscapes/PHS_2893.jpg',
+      '/images/landscapes/PHS_2925.jpg',
+      '/images/landscapes/PHS_3023.jpg',
+      '/images/landscapes/PHS_3738.jpg',
+      '/images/landscapes/PHS_3742.jpg',
+      '/images/landscapes/PHS_3773.jpg',
+      '/images/landscapes/PHS_4852.jpg',
+      '/images/landscapes/PHS_4900.jpg',
+      '/images/landscapes/PHS_4905.jpg',
+      '/images/landscapes/PHS_5044-Enhanced-NR.jpg',
+      '/images/landscapes/PHS_6290.jpg',
+      '/images/landscapes/PHS_6298.jpg',
+      '/images/landscapes/PHS_6354.jpg',
+      '/images/landscapes/PHS_6479.jpg',
+      '/images/landscapes/PHS_9557.jpg',
+      '/images/landscapes/PHS_9602-향상됨-노이즈 감소.jpg'
+    ]
+    
+    for (const imagePath of publicImages) {
+      photos.push({
+        category: 'Landscapes',
+        image: imagePath
+      })
+    }
   }
   
   allPhotos.value = photos
