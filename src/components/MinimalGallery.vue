@@ -241,7 +241,10 @@ async function loadImages() {
       '/images/landscapes/PHS_6354.jpg',
       '/images/landscapes/PHS_6479.jpg',
       '/images/landscapes/PHS_9557.jpg',
-      '/images/landscapes/PHS_9602-향상됨-노이즈 감소.jpg'
+      '/images/landscapes/PHS_9602-향상됨-노이즈 감소.jpg',
+      '/images/landscapes/1.jpg',
+      '/images/landscapes/2.jpg',
+      '/images/landscapes/3.jpg',
     ]
     
     for (const imagePath of publicImages) {
