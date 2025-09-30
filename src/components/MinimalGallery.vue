@@ -58,7 +58,7 @@
     <!-- Photo Gallery -->
     <div v-else class="w-full pt-8 pr-4 sm:pt-12 sm:pr-6 lg:pt-16 lg:pr-8">
       <!-- Photo Grid -->
-      <div class="grid-container px-2 sm:px-3 lg:px-4 py-2 lg:py-4">
+      <div class="grid-container px-2 sm:px-3 lg:px-4 py-2 lg:py-4 mx-auto max-w-sm sm:max-w-none">
         <div 
           v-for="(photo, index) in filteredPhotos" 
           :key="index"
@@ -284,12 +284,15 @@ function setupGrid() {
       columns: 1;
       column-gap: 4px;
       padding: 0;
+      margin: 0 auto;
+      text-align: center;
     }
     
     @media (min-width: 640px) {
       .grid-container {
         columns: 2;
         column-gap: 6px;
+        text-align: left;
       }
     }
     
@@ -319,6 +322,7 @@ function setupGrid() {
       width: 100%;
       margin-bottom: 4px;
       break-inside: avoid;
+      text-align: left;
     }
     
     @media (min-width: 640px) {
