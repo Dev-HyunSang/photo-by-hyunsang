@@ -49,6 +49,16 @@
                 </a>
             </p>
           </div>
+          <div>
+            <h3 class="font-medium mb-2">Copyright</h3>
+            <div class="text-sm text-gray-600 space-y-1">
+              <p>© 2024 HyunSang Park. All rights reserved.</p>
+              <p class="text-xs text-gray-500">
+                이 웹사이트에 게시된 모든 사진과 콘텐츠는 저작권법의 보호를 받습니다. 
+                무단 복제, 배포, 상업적 사용을 금지합니다.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -75,6 +85,13 @@
             />
           </div>
         </div>
+      </div>
+      
+      <!-- Copyright Footer -->
+      <div class="text-center py-8 px-4">
+        <p class="text-xs text-gray-400">
+          © 2024 HyunSang Park Photography. All rights reserved.
+        </p>
       </div>
     </div>
 
